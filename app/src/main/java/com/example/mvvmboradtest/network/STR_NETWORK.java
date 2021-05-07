@@ -6,5 +6,7 @@ public class STR_NETWORK {
 
     public static final String SERVER_URL = "server/user";
 
+    public static final String LOGIN_URL = "server/login";
+
 
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.SignUpActivity">
+
+
+
+        <EditText
+            android:id="@+id/et_signId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="ID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_signpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Passwrod"
+            app:layout_constraintEnd_toEndOf="@+id/et_signId"
+            app:layout_constraintStart_toStartOf="@+id/et_signId"
+            app:layout_constraintTop_toBottomOf="@+id/et_signId" />
+
+        <EditText
+            android:id="@+id/et_signName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            app:layout_constraintEnd_toEndOf="@+id/et_signpassword"
+            app:layout_constraintStart_toStartOf="@+id/et_signpassword"
+            app:layout_constraintTop_toBottomOf="@+id/et_signpassword" />
+
+        <EditText
+            android:id="@+id/et_signbirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Birth"
+            app:layout_constraintEnd_toEndOf="@+id/et_signName"
+            app:layout_constraintStart_toStartOf="@+id/et_signName"
+            app:layout_constraintTop_toBottomOf="@+id/et_signName" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="가입"
+            app:layout_constraintEnd_toEndOf="@+id/et_signbirth"
+            app:layout_constraintStart_toStartOf="@+id/et_signbirth"
+            app:layout_constraintTop_toBottomOf="@+id/et_signbirth" />
+
+        <Button
+            android:id="@+id/btn_signback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="뒤로가기"
+            android:layout_margin="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
