@@ -75,13 +75,14 @@ public class MainActivity extends AppCompatActivity {
     private LoginInterface loginInterface = new LoginInterface() {
         @Override
         public void LoginSuccessResponse(String l_str) {
+            Log.e("ssss", l_str);
             try {
                 JSONObject jsonObject = new JSONObject(l_str);
                 Boolean success = jsonObject.getBoolean("success");
                 String message = jsonObject.getString("message");
                 if (success) {
                     Toast.makeText(getApplicationContext(), ""+message , Toast.LENGTH_SHORT).show();
-                    String user_session_id = jsonObject.getString("userdata");
+                    int user_session_id = jsonObject.getInt("userdata");
                     Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
                     intent.putExtra("user_id", user_session_id);
                     startActivity(intent);
@@ -91,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
 
         @Override

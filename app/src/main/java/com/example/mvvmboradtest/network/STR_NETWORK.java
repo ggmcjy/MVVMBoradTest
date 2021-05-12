@@ -8,5 +8,9 @@ public class STR_NETWORK {
 
     public static final String LOGIN_URL = "server/login";
 
+    public static final String BOARD_CREATE_URL = "server/board-create";
 
+    public static final String BOARD_SELECT = "server/board-select/{user-id}";
+
+    public static final String BOARD_SELECT_ONE = "select/board-select-one";
 }

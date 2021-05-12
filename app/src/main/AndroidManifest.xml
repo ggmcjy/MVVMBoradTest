@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMBoradTest"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.SignUpActivity"></activity>
+        <activity android:name=".activities.BoardDetailActivity"></activity>
+        <activity android:name=".activities.SelectAllActivity" />
+        <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.BoardActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+            name="BoardUserId"
+            type="String" />
+        <variable
+            name="BoardTitle"
+            type="String" />
+        <variable
+            name="BoardContent"
+            type="String" />
+        <variable
+            name="CreatedTime"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.BoardDetailActivity">
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:hint="USER_ID"
+            android:text="@{BoardUserId}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_id"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="TITLE"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_id"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_user_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="title"
+            android:text="@{BoardTitle}"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_title"/>
+
+        <TextView
+            android:id="@+id/tv_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="content"
+            android:text="@{BoardContent}"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_created_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="CREATEDATE"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_content"/>
+
+        <TextView
+            android:id="@+id/tv_user_created_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="DATE"
+            android:text="@{CreatedTime}"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_created_date"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="뒤로가기"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_created_date"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_created_date"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

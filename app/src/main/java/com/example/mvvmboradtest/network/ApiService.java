@@ -1,5 +1,8 @@
 package com.example.mvvmboradtest.network;
 
+import com.example.mvvmboradtest.models.BoardModels;
+import com.example.mvvmboradtest.response.BoardShowResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -21,4 +24,18 @@ public interface ApiService {
     @FormUrlEncoded
     Call<ResponseBody> LoginUser (@Field("login_id") String login_id,
                                   @Field("login_password") String login_password);
+
+    @POST(STR_NETWORK.BOARD_CREATE_URL)
+    @FormUrlEncoded
+    Call<ResponseBody> BoardCreate (@Field("board_user_id") int board_user_id,
+                                    @Field("board_title") String board_title,
+                                    @Field("board_content") String board_content);
+
+
+    @POST(STR_NETWORK.BOARD_SELECT)
+    Call<BoardShowResponse> getBoardData(@Path("user-id") int user_id);
+
+    @POST(STR_NETWORK.BOARD_SELECT_ONE)
+    @FormUrlEncoded
+    Call<ResponseBody> getBoardOneDataDelete (@Field("board_id") int board_id);
 }
