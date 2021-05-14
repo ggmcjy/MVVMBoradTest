@@ -35,7 +35,7 @@ public interface ApiService {
     @POST(STR_NETWORK.BOARD_SELECT)
     Call<BoardShowResponse> getBoardData(@Path("user-id") int user_id);
 
-    @POST(STR_NETWORK.BOARD_SELECT_ONE)
+    @POST(STR_NETWORK.BOARD_SELECT_DELETE)
     @FormUrlEncoded
     Call<ResponseBody> getBoardOneDataDelete (@Field("board_id") int board_id);
 }

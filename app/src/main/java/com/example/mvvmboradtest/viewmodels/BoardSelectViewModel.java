@@ -14,6 +14,7 @@ public class BoardSelectViewModel extends ViewModel {
         boardSelectRepository = new BoardSelectRepository();
     }
 
+
     public LiveData<BoardShowResponse> getBoardShow(int user) {
         return boardSelectRepository.getBoardShow(user);
     }

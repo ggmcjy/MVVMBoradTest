@@ -55,6 +55,12 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     private void UserGetText() {
         sign_id = activitySignUpBinding.etSignId.getText().toString();

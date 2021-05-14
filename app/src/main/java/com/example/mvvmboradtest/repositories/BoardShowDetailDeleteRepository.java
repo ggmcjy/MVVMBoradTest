@@ -1,5 +1,7 @@
 package com.example.mvvmboradtest.repositories;
 
+import android.util.Log;
+
 import com.example.mvvmboradtest.interfaces.BoardDeleteInterface;
 import com.example.mvvmboradtest.network.ApiClient;
 import com.example.mvvmboradtest.network.ApiService;
@@ -12,7 +14,7 @@ import retrofit2.Response;
 public class BoardShowDetailDeleteRepository {
     private ApiService apiService;
 
-    public void BoardShowDetailDeleteRepository() {
+    public BoardShowDetailDeleteRepository() {
         apiService = ApiClient.getRetrofit().create(ApiService.class);
     }
 
@@ -21,9 +23,10 @@ public class BoardShowDetailDeleteRepository {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    Log.e("BoardDetail", "11111111111");
                     deleteInterface.BoardDeleteSuccessResponse(response.body().string());
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("delete error", e.toString());
                 }
 
             }

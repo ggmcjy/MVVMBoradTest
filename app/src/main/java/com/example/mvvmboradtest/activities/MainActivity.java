@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.mvvmboradtest.R;
 import com.example.mvvmboradtest.databinding.ActivityMainBinding;
+import com.example.mvvmboradtest.dialog.MessageDialog;
+import com.example.mvvmboradtest.dialog.MessageInterface;
 import com.example.mvvmboradtest.interfaces.LoginInterface;
 import com.example.mvvmboradtest.network.ApiClient;
 import com.example.mvvmboradtest.network.ApiService;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private LoginViewModel viewModel;
     private String Login_id = "" ;
     private String Login_password = "";
+    private MessageDialog messageDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +53,39 @@ public class MainActivity extends AppCompatActivity {
                 binding.etPassword.setText("");
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        ShowMessageDialog();
+    }
+
+    private void ShowMessageDialog() {
+        messageDialog = new MessageDialog();
+        messageDialog.ShowMessageDialog(this, "EXIT" , "앱을 종료하시겠습니까?" , messageInterface,true );
+    }
+
+    private MessageInterface messageInterface = new MessageInterface() {
+        @Override
+        public void DeleteYes() {
+            finish();
+        }
+
+        @Override
+        public void DeleteNo() {
+
+        }
+
+        @Override
+        public void ErrorConfirm() {
+
+        }
+    };
+
+
 
 
     private void LoginInit() {
@@ -86,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
                     intent.putExtra("user_id", user_session_id);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
                 }

@@ -15,11 +15,14 @@ import android.util.Log;
 import com.example.mvvmboradtest.R;
 import com.example.mvvmboradtest.adapters.BoardsAdapter;
 import com.example.mvvmboradtest.databinding.ActivitySelectAllBinding;
+import com.example.mvvmboradtest.dialog.MessageDialog;
+import com.example.mvvmboradtest.dialog.MessageInterface;
 import com.example.mvvmboradtest.interfaces.BoardSelectInterface;
 import com.example.mvvmboradtest.models.BoardModels;
 import com.example.mvvmboradtest.response.BoardShowResponse;
 import com.example.mvvmboradtest.utils.BoardRecyclerViewDecoration;
 import com.example.mvvmboradtest.viewmodels.BoardSelectViewModel;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class SelectAllActivity extends AppCompatActivity implements BoardSelectI
     private List<BoardModels> boardModels = new ArrayList<>();
     private BoardsAdapter boardsAdapter;
     private BoardSelectViewModel viewModel;
+    private MessageDialog messageDialog;
     private Integer total = 0;
     private int user_id;
     @Override
@@ -62,19 +66,46 @@ public class SelectAllActivity extends AppCompatActivity implements BoardSelectI
             @Override
             public void onChanged(BoardShowResponse boardShowResponse) {
                 int oldCount = boardModels.size();
-                boardModels.addAll(boardShowResponse.getBoardModels());
-                boardsAdapter.notifyItemRangeInserted(oldCount, boardModels.size());
+                int board_total = boardShowResponse.getTotal();
+                if (board_total == 0) {
+                    ShowMessage();
+                } else {
+                    boardModels.addAll(boardShowResponse.getBoardModels());
+                    boardsAdapter.notifyItemRangeInserted(oldCount, boardModels.size());
+                }
+
             }
         });
     }
 
+
+    private void ShowMessage () {
+        messageDialog = new MessageDialog();
+        messageDialog.ShowMessageDialog(this, "confirm" , "게시판이 없습니다 \n게시판을 작성해주시기 바랍니다.", messageInterface, false);
+    }
+
+    private MessageInterface messageInterface = new MessageInterface() {
+        @Override
+        public void DeleteYes() {
+
+        }
+
+        @Override
+        public void DeleteNo() {
+
+        }
+
+        @Override
+        public void ErrorConfirm() {
+            onBackPressed();
+        }
+    };
 
     @Override
     public void onBoardClicked(BoardModels boardModels) {
         Intent intent = new Intent(getApplicationContext(), BoardDetailActivity.class);
         intent.putExtra("board", boardModels);
         startActivity(intent);
-
-
+        finish();
     }
 }

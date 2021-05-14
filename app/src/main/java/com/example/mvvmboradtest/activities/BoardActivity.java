@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.mvvmboradtest.R;
 import com.example.mvvmboradtest.databinding.ActivityBoardBinding;
+import com.example.mvvmboradtest.dialog.MessageDialog;
+import com.example.mvvmboradtest.dialog.MessageInterface;
 import com.example.mvvmboradtest.interfaces.BoardCreateInterface;
 import com.example.mvvmboradtest.viewmodels.BoardCreateViewModel;
 
@@ -21,6 +23,7 @@ import org.json.JSONObject;
 public class BoardActivity extends AppCompatActivity {
     private ActivityBoardBinding binding;
     private BoardCreateViewModel viewModel;
+    private MessageDialog messageDialog;
     private String title = "";
     private String content = "";
     String title_trim = "";
@@ -59,6 +62,41 @@ public class BoardActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        MessageDialogShow();
+    }
+
+    private void MessageDialogShow() {
+        messageDialog = new MessageDialog();
+        messageDialog.ShowMessageDialog(this, "EXIT", "뒤로가기 버튼을 클릭시 로그아웃 됩니다. \n뒤로가기 하시겠습니까?" , messageInterface, true);
+    }
+
+    private MessageInterface messageInterface = new MessageInterface() {
+        @Override
+        public void DeleteYes() {
+            IntentLogin();
+        }
+
+        @Override
+        public void DeleteNo() {
+
+        }
+
+        @Override
+        public void ErrorConfirm() {
+
+        }
+    };
+
+    private void IntentLogin () {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
 
     private void BoardCreateInit() {
         BoardTextExists();
@@ -96,7 +134,6 @@ public class BoardActivity extends AppCompatActivity {
                 Log.e("message" , message);
                 if (success) {
                     Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-
                 } else {
                     Toast.makeText(getApplicationContext(),message + "",Toast.LENGTH_SHORT).show();
                 }

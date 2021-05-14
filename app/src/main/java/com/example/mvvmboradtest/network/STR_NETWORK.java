@@ -12,5 +12,5 @@ public class STR_NETWORK {
 
     public static final String BOARD_SELECT = "server/board-select/{user-id}";
 
-    public static final String BOARD_SELECT_ONE = "select/board-select-one";
+    public static final String BOARD_SELECT_DELETE = "server/board-select-delete";
 }
